@@ -5,7 +5,7 @@ public class Chest : MonoBehaviour, Interactable
 {
     public bool IsOpened { get; private set; }
     //public string ChestID { get; private set; }
-    public GameObject itemPrefab;
+    public Ability item;
     public Sprite openedSprite;
 
     public PlayerInventory playerInventory;
@@ -31,9 +31,9 @@ public class Chest : MonoBehaviour, Interactable
     {
         SetOpened(true);
 
-        if (itemPrefab)
+        if (item)
         {
-            playerInventory.AddItem(itemPrefab);
+            playerInventory.AddItem(item);
         }
     }
 

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -7,13 +8,19 @@ public class PlayerMovement : MonoBehaviour
     private float speed = 8f;
     private float jumpingPower = 16f;
     private float doubleJumpingPower = 10f;
-    private bool isFacingRight = true;
+    public bool isFacingRight { get; private set; } = true;
 
     private bool doubleJump;
+    private bool canDoubleJump = false;
+
+    public bool isGrappling { get; set; } = false;
+    private bool canGrapple = false;
 
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundcheck;
     [SerializeField] private LayerMask groundLayer;
+
+    public PlayerInventory inventory;
 
     private void Start()
     {
@@ -25,12 +32,13 @@ public class PlayerMovement : MonoBehaviour
     }
     public void Jump(InputAction.CallbackContext context) 
     {
+
         if (context.performed && IsGrounded())
         {
             doubleJump = false;
         }
 
-        if (context.performed && (IsGrounded() || doubleJump))
+        if (context.performed && (IsGrounded() || doubleJump && canDoubleJump))
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, doubleJump ? doubleJumpingPower : jumpingPower);
 
@@ -43,7 +51,35 @@ public class PlayerMovement : MonoBehaviour
         }
 
         Flip();
+        
+    }
 
+    public void UseGrapplingHook(InputAction.CallbackContext context)
+    {
+        if (context.performed && IsGrounded() && canGrapple)
+        {
+            inventory.UseAbility<Grapple>();
+        }
+    }
+
+    public void LaunchGrapplingHook(GameObject hookPrefab, float hookSpeed, float pullSpeed)
+    {
+        if (!isGrappling)
+        {
+            GameObject hook = Instantiate(hookPrefab, transform.position, Quaternion.identity);
+            hook.GetComponent<GrapplingHook>().Initialize(this, hookSpeed, pullSpeed);
+            isGrappling = true;
+        }
+    }
+
+    public IEnumerator PullToPosition(Vector3 targetPosition, float speed)
+    {
+        while (transform.position != targetPosition)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
+            yield return null;
+        }
+        isGrappling = false;
     }
 
     private void FixedUpdate()
@@ -65,6 +101,16 @@ public class PlayerMovement : MonoBehaviour
             localScale.x *= -1f;
             transform.localScale = localScale;
         }
+    }
+    public void EnableDoubleJump()
+    {
+        Debug.Log("Set Double Jump active");
+        canDoubleJump = true;
+    }
+    public void EnableGrapplingHook()
+    {
+        Debug.Log("Set Grappling Hook active");
+        canGrapple = true;
     }
 
     private void OnEnable()
