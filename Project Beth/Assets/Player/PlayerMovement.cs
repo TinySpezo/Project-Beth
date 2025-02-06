@@ -8,27 +8,31 @@ public class PlayerMovement : MonoBehaviour
     private float speed = 8f;
     private float jumpingPower = 16f;
     private float doubleJumpingPower = 10f;
-    public bool isFacingRight { get; private set; } = true;
+    public bool isFacingRight { get; private set; } = false;
 
     private bool doubleJump;
     private bool canDoubleJump = false;
 
-    public bool isGrappling { get; set; } = false;
     private bool canGrapple = false;
 
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundcheck;
     [SerializeField] private LayerMask groundLayer;
 
+    private GrapplingHook grapplingHook;
+
     public PlayerInventory inventory;
 
     private void Start()
     {
         EnablePlayerMovement();
+        grapplingHook = GetComponent<GrapplingHook>();
     }
     public void Move(InputAction.CallbackContext context)
     {
         horizontal = context.ReadValue<Vector2>().x;
+
+        Flip();
     }
     public void Jump(InputAction.CallbackContext context) 
     {
@@ -50,43 +54,24 @@ public class PlayerMovement : MonoBehaviour
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * 0.5f);
         }
 
-        Flip();
-        
     }
 
     public void UseGrapplingHook(InputAction.CallbackContext context)
     {
-        if (context.performed && IsGrounded() && canGrapple)
-        {
-            inventory.UseAbility<Grapple>();
-        }
-    }
 
-    public void LaunchGrapplingHook(GameObject hookPrefab, float hookSpeed, float pullSpeed)
-    {
-        if (!isGrappling)
+        if (context.performed && IsGrounded() && canGrapple && !grapplingHook.isGrappling)
         {
-            GameObject hook = Instantiate(hookPrefab, transform.position, Quaternion.identity);
-            hook.GetComponent<GrapplingHook>().Initialize(this, hookSpeed, pullSpeed);
-            isGrappling = true;
+            Debug.Log("Use Grapple");
+            grapplingHook.StartGrapple();
         }
-    }
-
-    public IEnumerator PullToPosition(Vector3 targetPosition, float speed)
-    {
-        while (Vector2.Distance(targetPosition, transform.position) > 0.5f)
-        {
-            transform.position = Vector2.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
-            yield return null;
-        }
-
-        isGrappling = false;
-        
     }
 
     private void FixedUpdate()
     {
-        rb.linearVelocity = new Vector2(horizontal * speed, rb.linearVelocity.y);
+        if (!grapplingHook.retracting && !grapplingHook.isGrappling)
+            rb.linearVelocity = new Vector2(horizontal * speed, rb.linearVelocity.y);
+        else
+            rb.linearVelocity = Vector2.zero;
     }
 
     private bool IsGrounded()

@@ -7,8 +7,4 @@ public class DoubleJump : Ability
     {
         player.EnableDoubleJump();
     }
-    public override void UseEffect(PlayerMovement player)
-    {
-
-    }
 }

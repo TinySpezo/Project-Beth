@@ -6,6 +6,4 @@ public abstract class Ability : ScriptableObject
     public Sprite icon;
 
     public abstract void ApplyEffect(PlayerMovement player);
-
-    public abstract void UseEffect(PlayerMovement player);
 }

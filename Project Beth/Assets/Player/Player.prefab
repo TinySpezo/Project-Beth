@@ -208,7 +208,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 8974576145402232712, guid: cc4e32df8983a184c965951790513117, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -283,8 +283,8 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    pivot: {x: 0.5, y: 0}
+    oldSize: {x: 1, y: 0.9375}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -309,6 +309,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
+  inventory: {fileID: 0}
 --- !u!114 &440948074872361600
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -333,6 +334,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b91c5ddbc4e09b40aeb3703200af706, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerMovement: {fileID: 0}
 --- !u!114 &4009212094037556622
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -446,6 +448,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 25c77ff1-b6ed-4b3e-a704-224a448a922c
     m_ActionName: 'Player/Interact[/Keyboard/e]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 07bfc204-d01c-4d0b-a74a-69f4ad8cfaf5
+    m_ActionName: 'Player/UseGrapplingHook[/Keyboard/f]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard&Mouse
   m_DefaultActionMap: Player
