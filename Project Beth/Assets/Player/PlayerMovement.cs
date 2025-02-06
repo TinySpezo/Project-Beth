@@ -74,12 +74,14 @@ public class PlayerMovement : MonoBehaviour
 
     public IEnumerator PullToPosition(Vector3 targetPosition, float speed)
     {
-        while (transform.position != targetPosition)
+        while (Vector2.Distance(targetPosition, transform.position) > 0.5f)
         {
             transform.position = Vector2.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
             yield return null;
         }
+
         isGrappling = false;
+        
     }
 
     private void FixedUpdate()
