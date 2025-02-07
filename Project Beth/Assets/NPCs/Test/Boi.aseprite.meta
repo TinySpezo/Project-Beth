@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: cc4e32df8983a184c965951790513117
+guid: 27d94f66917c55f478ab4102c867c637
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -98,7 +98,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638744813377419278
+  platformSettingsDirtyTick: 638745346318008614
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -123,7 +123,7 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: Slimy
+  - name: Boi
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -135,7 +135,7 @@ ScriptedImporter:
       y: 4
       width: 16
       height: 16
-    spriteID: c150d4c7b45dbc746aeea553d614c867
+    spriteID: c8534a99c26ca2148a1bed28ae9a68a3
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -147,21 +147,21 @@ ScriptedImporter:
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: -1355655462
-    name: Slimy
+    guid: 1502599520
+    name: Boi
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: Slimy
+    - name: Boi
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 16
-        height: 15
-      spriteId: c150d4c7b45dbc746aeea553d614c867
+        height: 13
+      spriteId: c8534a99c26ca2148a1bed28ae9a68a3
     linkedCells: []
     parentIndex: -1
   platformSettings:
