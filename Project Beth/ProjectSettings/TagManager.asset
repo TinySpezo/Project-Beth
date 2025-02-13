@@ -42,5 +42,23 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Background
+    uniqueID: 3575347569
+    locked: 0
+  - name: Collision
+    uniqueID: 3495838653
+    locked: 0
+  - name: BehindDecor
+    uniqueID: 4017992611
+    locked: 0
+  - name: Player
+    uniqueID: 4082122409
+    locked: 0
+  - name: FrontDecor
+    uniqueID: 1383285513
+    locked: 0
+  - name: HideAreas
+    uniqueID: 1750721327
+    locked: 0
   m_RenderingLayers:
   - Default

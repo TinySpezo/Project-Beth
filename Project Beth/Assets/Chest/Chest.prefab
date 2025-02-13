@@ -78,8 +78,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.47176534, g: 0.4000089, b: 0.8396226, a: 1}
+  m_Sprite: {fileID: -5281422124547630143, guid: 93726e5de9ba14b45b306743bca5f333, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -148,5 +148,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: 29afecce1327e2146b7b44ccc5c65f0d, type: 2}
-  openedSprite: {fileID: 7482667652216324306, guid: d576676d0cd38964cbef08a46270f444, type: 3}
+  openedSprite: {fileID: -284362848, guid: 93726e5de9ba14b45b306743bca5f333, type: 3}
   playerInventory: {fileID: 0}

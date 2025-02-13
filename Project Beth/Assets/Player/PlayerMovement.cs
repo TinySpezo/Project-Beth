@@ -5,9 +5,9 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     private float horizontal;
-    private float speed = 8f;
-    private float jumpingPower = 16f;
-    private float doubleJumpingPower = 10f;
+    [SerializeField] private float speed = 8f;
+    [SerializeField] private float jumpingPower = 16f;
+    [SerializeField] private float doubleJumpingPower = 10f;
     public bool isFacingRight { get; private set; } = false;
 
     private bool doubleJump;
@@ -18,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundcheck;
     [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private LayerMask grappleLayer;
 
     private GrapplingHook grapplingHook;
 
@@ -76,7 +77,7 @@ public class PlayerMovement : MonoBehaviour
 
     private bool IsGrounded()
     {
-        return Physics2D.OverlapCircle(groundcheck.position, 0.2f, groundLayer);
+        return Physics2D.OverlapCircle(groundcheck.position, 0.2f, groundLayer) || Physics2D.OverlapCircle(groundcheck.position, 0.2f, grappleLayer);
     }
 
     private void Flip()

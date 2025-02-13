@@ -1,2 +1,14 @@
 fileFormatVersion: 2
 guid: c3a43756733a9094ca0b4f79896d16ac
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - item: {instanceID: 0}
+  - openedSprite: {fileID: -284362848, guid: 93726e5de9ba14b45b306743bca5f333, type: 3}
+  - playerInventory: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
